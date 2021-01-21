@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Group4</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" onclick="navigate(1)">Quan li san pham<span class="sr-only">(current)</span></a><br>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" onclick="navigate(2)">Quan li nguoi dung</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div id="a" style="display: block;">
+
+        <div id="layoutSidenav_content">
+            <div class="product">
+                <div class="title" style=" text-align:center; color: blue;">QUẢN LÍ SẢN PHẨM</div>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          <i class=" fas fa-plus mr-2"></i>Create
+        </button>
+                <table class="table">
+                    <thead class="thead-light text-center">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Img</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center" id="product-admin">
+                        <script src="admin1.js"></script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLable1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Thêm sản phẩm</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" class="form-row">
+                            <!-- <div class="col-12">
+                        <input class="form-control" type="text" id="id" placehoder="id">
+                    </div> -->
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="name" placeholder="Name">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="img" placeholder="Img">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="number" id="price" placeholder="Price">
+                            </div>
+                            <a class="btn btn-outline-danger mt-3" href="" onclick="addProduct()">Thêm</a>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="updateProduct" tabindex="-1" role="dialog" aria-labelledby="#exampleModalLable1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sửa sản phẩm</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" class="form-row">
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="idd" placeholder="idd">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="named" placeholder="Named">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="imgd" placeholder="Imgd">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="number" id="priced" placeholder="Priced">
+                            </div>
+                            <a class="btn btn-outline-danger mt-3" href="" onclick="updateProduct()" id="submitUpdate">Sửa</a>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="b" style="display: none;">
+
+
+
+        <div class="layoutSidenav_content">
+            <div class="product">
+                <div class="title">
+                    Quan li nguoi dung
+                </div>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i
+            class="fas fa-plus mr-2"></i>Create</button>
+                <table class="table">
+                    <thead class="thead-light text-center">
+                        <tr>
+                            <th>ID</th>
+                            <th>USERNAME</th>
+                            <th>NAME</th>
+                            <th>SDT</th>
+                            <th>EAMIL</th>
+                            <th>ADRESS</th>
+                            <th>ROLE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center" id="user-admin"> </tbody>
+                    <script src="admins.js"></script>
+                </table>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLable1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">THEM NGUOI DUNG</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="" class="form-row">
+
+                            <div class="col-6 mt-3">
+                                <input class="form-control" type="text" id="username" placeholder="UserName">
+                            </div>
+                            <div class="col-6 mt-3">
+                                <input class="form-control" type="text" id="name" placeholder="Name">
+                            </div>
+
+                            <div class="col-6 mt-3">
+                                <input class="form-control" type="number" id="sdt" placeholder="So dien thoai">
+                            </div>
+                            <div class="col-6 mt-3">
+                                <input class="form-control" type="text" id="eamil" placeholder="Email">
+                            </div>
+                            <div class="col-8 mt-3">
+                                <input class="form-control" type="text" id="address" placeholder="Address">
+                            </div>
+                            <div class="col-4 mt-3">
+                                <input class="form-control" type="text" id="role" placeholder="Role">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="password" placeholder="Password">
+                            </div>
+                            <!-- <div class="col-12 mt-3">
+                              <input class="form-control" type="number" id="action" placeholder="Action">
+                          </div> -->
+                            <a class="btn btn-outline-danger mt-3" href="" onclick="addAdmin()">Add</a>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="updateProduct" tabindex="-1" role="dialog" aria-labelledby="#exampleModalLable1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Chinh sua nguoi dung</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" class="form-row">
+                            <div class="col-12 mt-3">
+
+                                <input class="form-control" type="text" id="idd" placeholder="idd">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="usernamed" placeholder="UserName">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="named" placeholder="Name">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="number" id="sdtd" placeholder="So dien thoai">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="eamild" placeholder="Email">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="addressd" placeholder="Address">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" id="roled" placeholder="Role">
+                            </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="number" id="passwordd" placeholder="Password">
+                            </div>
+
+                            <a class="btn btn-outline-danger mt-3" href="" onclick="updateAdmin()" id="submitUpdate">Sửa</a>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const navigate = (i) => {
+            if (i == 2) {
+                document.getElementById('a').style.display = 'none';
+                document.getElementById('b').style.display = 'block';
+            } else {
+                document.getElementById('b').style.display = 'none';
+                document.getElementById('a').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>
